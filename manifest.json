@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "min_manager_version": "0.1.0",
+  "plugins": [
+    {
+      "id": "shp.vocalstrip",
+      "slug": "vocalstrip",
+      "name": "SHP Vocal Strip",
+      "category": "channel-strip",
+      "github_repo": "akheron98/shp-vocalstrip",
+      "asset_pattern": "shp-vocalstrip-{version}-win64.zip",
+      "vst3_bundle_name": "SHP Vocal Strip.vst3",
+      "description": "Vocal channel strip — clean, fry, growl",
+      "icon_url": "https://raw.githubusercontent.com/akheron98/shp-plugin-registry/main/icons/vocalstrip.png"
+    },
+    {
+      "id": "shp.guitarstrip",
+      "slug": "guitarstrip",
+      "name": "SHP Guitar Strip",
+      "category": "channel-strip",
+      "github_repo": "akheron98/shp-guitarstrip",
+      "asset_pattern": "shp-guitarstrip-{version}-win64.zip",
+      "vst3_bundle_name": "SHP Guitar Strip.vst3",
+      "description": "Doom-stack guitar channel strip",
+      "icon_url": "https://raw.githubusercontent.com/akheron98/shp-plugin-registry/main/icons/guitarstrip.png"
+    },
+    {
+      "id": "shp.bassstrip",
+      "slug": "bassstrip",
+      "name": "SHP Bass Strip",
+      "category": "channel-strip",
+      "github_repo": "akheron98/shp-bassstrip",
+      "asset_pattern": "shp-bassstrip-{version}-win64.zip",
+      "vst3_bundle_name": "SHP Bass Strip.vst3",
+      "description": "Low-end channel strip with sub harmonics",
+      "icon_url": "https://raw.githubusercontent.com/akheron98/shp-plugin-registry/main/icons/bassstrip.png"
+    },
+    {
+      "id": "shp.multibandsaturator",
+      "slug": "multibandsaturator",
+      "name": "SHP Multiband Tube Saturator",
+      "category": "saturation",
+      "github_repo": "akheron98/shp-multibandsaturator",
+      "asset_pattern": "shp-multibandsaturator-{version}-win64.zip",
+      "vst3_bundle_name": "SHP-mb.vst3",
+      "description": "Multiband tube-style saturation",
+      "icon_url": "https://raw.githubusercontent.com/akheron98/shp-plugin-registry/main/icons/multibandsaturator.png"
+    }
+  ]
+}
