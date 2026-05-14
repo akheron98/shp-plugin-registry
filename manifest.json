@@ -49,6 +49,18 @@
       "vst3_bundle_name": "SHP-mb.vst3",
       "description": "Multiband tube-style saturation",
       "icon_url": "https://raw.githubusercontent.com/akheron98/shp-plugin-registry/main/icons/multibandsaturator.png"
+    },
+    {
+      "id": "shp.doubletracking",
+      "slug": "doubletracking",
+      "name": "SHP Double Tracking",
+      "category": "stereo-imaging",
+      "github_repo": "akheron98/shp-builds",
+      "tag_prefix": "doubletracking-v",
+      "asset_pattern": "shp-doubletracking-{version}-win64.zip",
+      "vst3_bundle_name": "SHP Double Tracking.vst3",
+      "description": "Real-time artificial double tracking with mono-compatible decorrelation",
+      "icon_url": "https://raw.githubusercontent.com/akheron98/shp-plugin-registry/main/icons/doubletracking.png"
     }
   ]
 }
