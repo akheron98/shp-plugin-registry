@@ -15,7 +15,7 @@
           <span>MANUEL UTILISATEUR · USER MANUAL</span>
         </div>
         <div class="top-rule">
-          <span>REV 1.0 · 2026</span>
+          <span>REV {{VERSION}} · {{YEAR}}</span>
         </div>
       </div>
 
@@ -30,7 +30,7 @@
 
       <div class="cover-bottom">
         <div style="display:flex; align-items:flex-end; gap:6mm;">
-          <img class="mark mark--xl" src="assets/logo-bone.png" alt="Sombre Harfang Productions" />
+          <img class="mark mark--xl" src="{{LOGO_BONE}}" alt="Sombre Harfang Productions" />
           <div class="label-stack">
             <div class="wordmark">SHP</div>
             <div class="small">SOMBRE HARFANG<br/>PRODUCTIONS</div>
@@ -75,14 +75,14 @@
           <p class="mono-tiny" style="margin-top:3mm; line-height:1.8; letter-spacing:0.1em;">
             COMPOSÉ EN OSWALD &amp; JETBRAINS MONO<br/>
             IMPRESSION RECOMMANDÉE A4 · 100 G/M²<br/>
-            © 2026 SOMBRE HARFANG PRODUCTIONS
+            © {{YEAR}} SOMBRE HARFANG PRODUCTIONS
           </p>
         </div>
       </div>
     </div>
 
     <div class="r-foot">
-      <span>{{CODE}} · v1.0</span>
+      <span>{{CODE}} · v{{VERSION}}</span>
       <span class="pageno">02</span>
     </div>
   </section>
@@ -94,7 +94,7 @@
   <section class="page page--dark">
     <div class="back">
       <div class="back-top">
-        <img class="mark mark--xl" src="assets/logo-bone.png" alt="Sombre Harfang Productions" style="width:48mm; height:48mm;" />
+        <img class="mark mark--xl" src="{{LOGO_BONE}}" alt="Sombre Harfang Productions" style="width:48mm; height:48mm;" />
         <div class="stamp">
           SOMBRE HARFANG PRODUCTIONS<br/>
           <span class="blood">·</span><br/>
@@ -105,7 +105,7 @@
         </div>
       </div>
       <div class="back-bottom">
-        <span>{{CODE}} · v1.0 · 2026</span>
+        <span>{{CODE}} · v{{VERSION}} · {{YEAR}}</span>
         <span>MANUFACTURED IN SOFTWARE</span>
       </div>
     </div>

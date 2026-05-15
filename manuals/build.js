@@ -16,50 +16,63 @@ const inputPath = path.resolve(args[0]);
 const outputPath = path.resolve(args[1]);
 const slug = args[2];
 const version = args[3];
+const year = new Date().getFullYear().toString();
 
 const templateStr = fs.readFileSync(path.join(__dirname, 'template.html'), 'utf8');
+
+// Embed logo as base64 to avoid broken paths in PDF
+const logoPath = path.join(__dirname, '..', '..', 'pdfdesign', 'shp-manual-skill', 'assets', 'logo-bone.png');
+let logoBase64 = '';
+try {
+  const logoBuffer = fs.readFileSync(logoPath);
+  logoBase64 = `data:image/png;base64,${logoBuffer.toString('base64')}`;
+} catch (e) {
+  console.warn(`Warning: Could not load logo from ${logoPath}`);
+}
 
 // Config mapping for each plugin
 const pluginConfigs = {
   'vocalstrip': {
     title: 'Vocal<br/>Strip',
     fulltitle: 'VOCAL STRIP',
-    subtitle: 'VOCAL FRY / GROWL — 500-SERIES RACK',
-    code: 'SHP-VS-500',
+    subtitle: 'VOCAL FRY / GROWL — RACK MOUNT SERIES',
+    code: 'SHP-VS-RACK',
     sn: 'VS'
   },
   'guitarstrip': {
     title: 'Guitar<br/>Strip',
     fulltitle: 'GUITAR STRIP',
-    subtitle: 'GUITAR EQ / CHUG / SATURATION — 500-SERIES RACK',
-    code: 'SHP-GS-500',
+    subtitle: 'GUITAR EQ / CHUG / SATURATION — RACK MOUNT SERIES',
+    code: 'SHP-GS-RACK',
     sn: 'GS'
   },
   'bassstrip': {
     title: 'Bass<br/>Strip',
     fulltitle: 'BASS STRIP',
-    subtitle: 'BASS EQ / DYNAMICS / AMP — 500-SERIES RACK',
-    code: 'SHP-BS-500',
+    subtitle: 'BASS EQ / DYNAMICS / AMP — RACK MOUNT SERIES',
+    code: 'SHP-BS-RACK',
     sn: 'BS'
   },
   'multibandsaturator': {
     title: 'Multiband<br/>Saturator',
     fulltitle: 'MULTIBAND SATURATOR',
-    subtitle: 'TUBE SATURATION — 500-SERIES RACK',
-    code: 'SHP-MB-500',
+    subtitle: 'TUBE SATURATION — RACK MOUNT SERIES',
+    code: 'SHP-MB-RACK',
     sn: 'MB'
   },
   'doubletracking': {
     title: 'Double<br/>Tracking',
     fulltitle: 'DOUBLE TRACKING',
-    subtitle: 'STEREO WIDENER — 500-SERIES RACK',
-    code: 'SHP-DT-500',
+    subtitle: 'STEREO WIDENER — RACK MOUNT SERIES',
+    code: 'SHP-DT-RACK',
     sn: 'DT'
   }
 };
 
 async function buildPDF() {
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({
+    args: ['--no-sandbox', '--disable-setuid-sandbox']
+  });
   const config = pluginConfigs[slug];
   if (!config) {
     console.error(`Unknown plugin slug: ${slug}`);
@@ -83,7 +96,7 @@ async function buildPDF() {
     <section class="page page--inside">
       <div class="r-head">
         <span><span class="blood">SHP</span> · ${config.fulltitle} · MANUEL</span>
-        <span>${sectionTitle} · CH. 0${i}</span>
+        <span>${sectionTitle} · CH. ${String(i).padStart(2, '0')}</span>
       </div>
 
       <div style="margin-top: 5mm;">
@@ -100,20 +113,23 @@ async function buildPDF() {
     pageNum++;
   }
 
-  // Update version in template
+  // Apply template
   let finalHtml = templateStr
     .replace(/\{\{TITLE\}\}/g, config.title)
     .replace(/\{\{FULLTITLE\}\}/g, config.fulltitle)
     .replace(/\{\{SUBTITLE\}\}/g, config.subtitle)
     .replace(/\{\{CODE\}\}/g, config.code)
     .replace(/\{\{SN\}\}/g, config.sn)
-    .replace(/v1\.0/g, `v${version}`)
+    .replace(/\{\{VERSION\}\}/g, version)
+    .replace(/\{\{YEAR\}\}/g, year)
+    .replace(/\{\{LOGO_BONE\}\}/g, logoBase64)
     .replace('{{CONTENT}}', contentHtml);
 
   const tempHtmlPath = path.join(__dirname, `temp_${slug}_${Date.now()}.html`);
   fs.writeFileSync(tempHtmlPath, finalHtml);
 
   const page = await browser.newPage();
+  // Using data URL or ensure the directory is correct for CSS loading
   await page.goto(`file:///${tempHtmlPath.replace(/\\/g, '/')}`, { waitUntil: 'networkidle0' });
   await page.pdf({
     path: outputPath,
