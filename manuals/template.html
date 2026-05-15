@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<title>SHP Manual</title>
+<link rel="stylesheet" href="manual.css" />
+</head>
+<body>
+  <!-- Cover Page -->
+  <section class="page page--dark">
+    <div class="cover">
+      <div class="cover-top">
+        <div class="top-rule">
+          <span class="blood-dot"></span>
+          <span>MANUEL UTILISATEUR · USER MANUAL</span>
+        </div>
+        <div class="top-rule">
+          <span>REV 1.0 · 2026</span>
+        </div>
+      </div>
+
+      <div class="cover-center">
+        <div class="sub-title">SHP / SOMBRE HARFANG PRODUCTIONS</div>
+        <h1 class="title">{{TITLE}}</h1>
+        <div class="sub-title" style="color: rgba(205,198,180,0.45);">
+          {{SUBTITLE}}
+        </div>
+        <div class="rack-strip"></div>
+      </div>
+
+      <div class="cover-bottom">
+        <div style="display:flex; align-items:flex-end; gap:6mm;">
+          <img class="mark mark--xl" src="assets/logo-bone.png" alt="Sombre Harfang Productions" />
+          <div class="label-stack">
+            <div class="wordmark">SHP</div>
+            <div class="small">SOMBRE HARFANG<br/>PRODUCTIONS</div>
+          </div>
+        </div>
+        <div class="serial-block">
+          <div>MODEL · {{CODE}}</div>
+          <div class="lg">{{FULLTITLE}}</div>
+          <div>S/N · SHP·{{SN}}·001984</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Inside Page Template -->
+  <section class="page page--inside">
+    <div class="r-head">
+      <span><span class="blood">SHP</span> · {{FULLTITLE}} · MANUEL</span>
+      <span>TABLE DES MATIÈRES</span>
+    </div>
+
+    <div style="display:flex; gap:14mm; flex:1;">
+      <div style="flex:1; display:flex; flex-direction:column; gap:8mm;">
+        <div>
+          <div class="eyebrow">À propos de ce document</div>
+          <h2 class="section" style="margin-top:3mm;">Manuel</h2>
+        </div>
+        <p>
+          Ce manuel décrit le fonctionnement de <strong>{{FULLTITLE}}</strong>,
+          un processeur audio virtuel développé par Sombre Harfang Productions.
+        </p>
+        <p class="dim">
+          Document imprimé en typographie monospace pour cohérence avec
+          l'interface du plugin. Aucun terme de l'interface n'est traduit; ils
+          apparaissent en majuscules tels qu'ils figurent sur la face avant.
+        </p>
+      </div>
+
+      <div style="width:74mm; display:flex; flex-direction:column; gap:6mm;">
+        <div style="margin-top:auto;">
+          <div class="eyebrow">Colophon</div>
+          <p class="mono-tiny" style="margin-top:3mm; line-height:1.8; letter-spacing:0.1em;">
+            COMPOSÉ EN OSWALD &amp; JETBRAINS MONO<br/>
+            IMPRESSION RECOMMANDÉE A4 · 100 G/M²<br/>
+            © 2026 SOMBRE HARFANG PRODUCTIONS
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="r-foot">
+      <span>{{CODE}} · v1.0</span>
+      <span class="pageno">02</span>
+    </div>
+  </section>
+
+  <!-- Content Pages -->
+  {{CONTENT}}
+
+  <!-- Back Cover -->
+  <section class="page page--dark">
+    <div class="back">
+      <div class="back-top">
+        <img class="mark mark--xl" src="assets/logo-bone.png" alt="Sombre Harfang Productions" style="width:48mm; height:48mm;" />
+        <div class="stamp">
+          SOMBRE HARFANG PRODUCTIONS<br/>
+          <span class="blood">·</span><br/>
+          FABRIQUÉ POUR L'OREILLE<br/>
+          ENGINEERED FOR THE EAR<br/>
+          <span style="opacity:0.5;">·</span><br/>
+          SOMBREHARFANG.COM
+        </div>
+      </div>
+      <div class="back-bottom">
+        <span>{{CODE}} · v1.0 · 2026</span>
+        <span>MANUFACTURED IN SOFTWARE</span>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
